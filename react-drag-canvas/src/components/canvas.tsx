@@ -1,9 +1,15 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import type { CanvasProps } from "./types";
 import React from "react";
 
-export function Canvas({ children, className = "", gridSize }: CanvasProps) {
+export function Canvas({
+  children,
+  className = "",
+  gridSize,
+  locked = false,
+}: CanvasProps) {
   const canvasRef = useRef<HTMLDivElement>(null);
+  locked && (canvasRef!.current!.style.pointerEvents = "none");
   return (
     <div
       ref={canvasRef}

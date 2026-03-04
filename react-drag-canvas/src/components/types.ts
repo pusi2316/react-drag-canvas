@@ -18,6 +18,7 @@ export interface CanvasProps {
   children: React.ReactNode;
   className?: string;
   gridSize?: number;
+  locked: boolean;
 }
 
 export interface CanvasItem {
