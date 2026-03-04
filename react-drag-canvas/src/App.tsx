@@ -23,7 +23,10 @@ export default function App() {
 
   return (
     <div className="p-20">
-      <Canvas className="bg-white shadow-lg rounded-lg p-4 cursor-move">
+      <Canvas
+        className="bg-white shadow-lg rounded-lg p-4 cursor-move"
+        locked={false}
+      >
         {items.map((item) => (
           <DragableWrapper
             key={item.id}

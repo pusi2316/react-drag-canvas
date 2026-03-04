@@ -6,10 +6,9 @@ export function Canvas({
   children,
   className = "",
   gridSize,
-  locked = false,
+  locked,
 }: CanvasProps) {
   const canvasRef = useRef<HTMLDivElement>(null);
-  locked && (canvasRef!.current!.style.pointerEvents = "none");
   return (
     <div
       ref={canvasRef}
@@ -25,7 +24,10 @@ export function Canvas({
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement<any>, { canvasRef })
+          ? React.cloneElement(child as React.ReactElement<any>, {
+              canvasRef,
+              locked,
+            })
           : child
       )}
     </div>

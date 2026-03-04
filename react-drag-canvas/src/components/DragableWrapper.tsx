@@ -9,6 +9,7 @@ export function DragableWrapper({
   onPositionChange,
   gridSnap,
   canvasRef,
+  locked,
 }: DraggableItemProps) {
   const [pos, setPos] = useState<Position>({ x: initialX, y: initialY });
   const dragging = useRef<boolean>(false);
@@ -30,6 +31,7 @@ export function DragableWrapper({
   };
 
   const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (locked) return;
     dragging.current = true;
     offset.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
     e.preventDefault();
@@ -63,7 +65,11 @@ export function DragableWrapper({
     <div
       ref={itemRef}
       onMouseDown={onMouseDown}
-      className="absolute cursor-grab active:cursor-grabbing select-none"
+      className={`absolute ${
+        locked
+          ? `cursor-default`
+          : `cursor-grab active:cursor-grabbing select-none`
+      }`}
       style={{ left: pos.x, top: pos.y }}
     >
       {children}

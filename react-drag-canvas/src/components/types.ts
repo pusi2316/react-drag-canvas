@@ -12,6 +12,7 @@ export interface DraggableItemProps {
   bounds?: boolean;
   gridSnap?: number; // snap to grid (px)
   canvasRef?: React.RefObject<HTMLDivElement>; // for bounds checking
+  locked?: boolean;
 }
 
 export interface CanvasProps {
