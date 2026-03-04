@@ -1,4 +1,3 @@
-// DraggableItem.tsx
 import { useState, useEffect, useRef } from "react";
 import type { DraggableItemProps, Position } from "./types";
 

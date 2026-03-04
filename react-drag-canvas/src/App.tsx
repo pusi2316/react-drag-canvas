@@ -43,6 +43,12 @@ export default function App() {
         >
           <MyCard title="Static Card" className="min-w-200 border-2" />
         </DragableWrapper>
+        <DragableWrapper id="free card" onPositionChange={updatePosition}>
+          <h1 className="text-2xl font-bold bg-blue-100 p-4 rounded">
+            {" "}
+            dsfdasf{" "}
+          </h1>
+        </DragableWrapper>
       </Canvas>
     </div>
   );

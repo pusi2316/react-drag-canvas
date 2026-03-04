@@ -9,7 +9,7 @@ export interface DraggableItemProps {
   initialY?: number;
   children: React.ReactNode;
   onPositionChange?: (id: string, position: Position) => void;
-  bounds?: boolean; // clamp to canvas bounds
+  bounds?: boolean;
   gridSnap?: number; // snap to grid (px)
   canvasRef?: React.RefObject<HTMLDivElement>; // for bounds checking
 }
@@ -17,7 +17,7 @@ export interface DraggableItemProps {
 export interface CanvasProps {
   children: React.ReactNode;
   className?: string;
-  gridSize?: number; // for visual grid background
+  gridSize?: number;
 }
 
 export interface CanvasItem {
