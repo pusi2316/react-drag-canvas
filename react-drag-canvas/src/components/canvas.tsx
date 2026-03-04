@@ -4,7 +4,7 @@ import type { CanvasProps } from "./types";
 export function Canvas({ children, className = "", gridSize }: CanvasProps) {
   return (
     <div
-      className={`relative w-full h-screen overflow-hidden bg-gray-50 ${className}`}
+      className={`relative w-full h-screen overflow-hidden ${className}`}
       style={
         gridSize
           ? {
