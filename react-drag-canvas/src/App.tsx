@@ -41,7 +41,7 @@ export default function App() {
           onPositionChange={updatePosition}
           gridSnap={20}
         >
-          <MyCard title="Static Card" />
+          <MyCard title="Static Card" className="min-w-200 border-2" />
         </DragableWrapper>
       </Canvas>
     </div>
