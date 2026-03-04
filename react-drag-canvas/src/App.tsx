@@ -35,6 +35,13 @@ export default function App() {
           {item.component}
         </DragableWrapper>
       ))}
+      <DragableWrapper
+        id="static card"
+        onPositionChange={updatePosition}
+        gridSnap={20}
+      >
+        <MyCard title="Static Card" />
+      </DragableWrapper>
     </Canvas>
   );
 }
