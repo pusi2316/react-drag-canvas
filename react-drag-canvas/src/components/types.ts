@@ -11,6 +11,7 @@ export interface DraggableItemProps {
   onPositionChange?: (id: string, position: Position) => void;
   bounds?: boolean; // clamp to canvas bounds
   gridSnap?: number; // snap to grid (px)
+  canvasRef?: React.RefObject<HTMLDivElement>; // for bounds checking
 }
 
 export interface CanvasProps {

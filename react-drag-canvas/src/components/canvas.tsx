@@ -1,9 +1,12 @@
-// Canvas.tsx
+import { useRef } from "react";
 import type { CanvasProps } from "./types";
+import React from "react";
 
 export function Canvas({ children, className = "", gridSize }: CanvasProps) {
+  const canvasRef = useRef<HTMLDivElement>(null);
   return (
     <div
+      ref={canvasRef}
       className={`relative w-full h-screen overflow-hidden ${className}`}
       style={
         gridSize
@@ -14,7 +17,11 @@ export function Canvas({ children, className = "", gridSize }: CanvasProps) {
           : undefined
       }
     >
-      {children}
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? React.cloneElement(child as React.ReactElement<any>, { canvasRef })
+          : child
+      )}
     </div>
   );
 }

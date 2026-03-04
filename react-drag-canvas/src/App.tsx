@@ -22,26 +22,28 @@ export default function App() {
   const { items, updatePosition } = useCanvasItems(initialItems);
 
   return (
-    <Canvas gridSize={20}>
-      {items.map((item) => (
+    <div className="p-20">
+      <Canvas className="bg-white shadow-lg rounded-lg p-4 cursor-move">
+        {items.map((item) => (
+          <DragableWrapper
+            key={item.id}
+            id={item.id}
+            initialX={item.position.x}
+            initialY={item.position.y}
+            onPositionChange={updatePosition}
+            gridSnap={20}
+          >
+            {item.component}
+          </DragableWrapper>
+        ))}
         <DragableWrapper
-          key={item.id}
-          id={item.id}
-          initialX={item.position.x}
-          initialY={item.position.y}
+          id="static card"
           onPositionChange={updatePosition}
           gridSnap={20}
         >
-          {item.component}
+          <MyCard title="Static Card" />
         </DragableWrapper>
-      ))}
-      <DragableWrapper
-        id="static card"
-        onPositionChange={updatePosition}
-        gridSnap={20}
-      >
-        <MyCard title="Static Card" />
-      </DragableWrapper>
-    </Canvas>
+      </Canvas>
+    </div>
   );
 }
