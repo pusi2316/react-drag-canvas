@@ -1,4 +1,3 @@
-// Usage — App.tsx
 import { useState } from "react";
 import { Canvas } from "./components/canvas";
 import { DragableWrapper } from "./components/DragableWrapper";
