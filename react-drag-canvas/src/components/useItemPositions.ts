@@ -13,10 +13,7 @@ export function useItemPositions() {
 
   const savePosition = useCallback((id: string, position: Position): void => {
     try {
-      const saved = localStorage.getItem("canvas-positions");
-      const positions: Record<string, Position> = saved
-        ? JSON.parse(saved)
-        : {};
+      const positions: Record<string, Position> = savedPositions;
       positions[id] = position;
       localStorage.setItem("canvas-positions", JSON.stringify(positions));
     } catch (e) {
