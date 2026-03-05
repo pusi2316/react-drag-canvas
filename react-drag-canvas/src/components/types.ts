@@ -27,3 +27,7 @@ export interface CanvasItem {
   position: Position;
   component: React.ReactNode;
 }
+
+export type Action =
+  | { type: "UPDATE_POSITION"; id: string; position: Position }
+  | { type: "RESET" };

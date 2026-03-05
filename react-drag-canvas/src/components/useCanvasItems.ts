@@ -1,22 +1,28 @@
-import { useState, useCallback } from "react";
+import { useCallback, useReducer } from "react";
 import type { Position, CanvasItem } from "./types";
+import { itemReducer } from "./itemReducer";
 
 export function useCanvasItems(initial: CanvasItem[] = []) {
-  const [items, setItems] = useState<CanvasItem[]>(initial);
+  const [items, dispatch] = useReducer(itemReducer, initial, (init) => {
+    const saved = localStorage.getItem("canvas-positions");
+    if (!saved) return init;
+    const positions: Record<string, Position> = JSON.parse(saved);
+    if (!Array.isArray(init)) return initial;
+
+    return init.map((item) => ({
+      ...item,
+      position: positions[item.id] || item.position,
+    }));
+    //return saved ? JSON.parse(saved) : init;
+  });
 
   const updatePosition = useCallback((id: string, position: Position) => {
-    setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, position } : item))
-    );
+    dispatch({ type: "UPDATE_POSITION", id, position });
   }, []);
 
-  const addItem = useCallback((item: CanvasItem) => {
-    setItems((prev) => [...prev, item]);
+  const reset = useCallback(() => {
+    dispatch({ type: "RESET" });
   }, []);
 
-  const removeItem = useCallback((id: string) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  }, []);
-
-  return { items, updatePosition, addItem, removeItem };
+  return { items, updatePosition, reset };
 }
