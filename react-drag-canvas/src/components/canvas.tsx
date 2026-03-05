@@ -1,9 +1,5 @@
-import { useCallback, useMemo, useRef } from "react";
-import {
-  type DraggableItemProps,
-  type CanvasProps,
-  type Position,
-} from "./types";
+import { useRef } from "react";
+import { type DraggableItemProps, type CanvasProps } from "./types";
 import React from "react";
 import { useItemPositions } from "./useItemPositions";
 
