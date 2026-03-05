@@ -8,6 +8,7 @@ export function Canvas({
   className = "",
   gridSize,
   locked,
+  onDragEnd,
 }: CanvasProps) {
   const canvasRef = useRef<HTMLDivElement>(null);
   const { savedPositions, savePosition } = useItemPositions();
@@ -34,6 +35,7 @@ export function Canvas({
           canvasRef,
           locked,
           onPositionChange: savePosition,
+          ...(onDragEnd && { onDragEnd }),
           ...(savedPos && { initialX: savedPos.x, initialY: savedPos.y }),
         });
       })}

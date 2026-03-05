@@ -20,6 +20,7 @@ export interface CanvasProps {
   className?: string;
   gridSize?: number;
   locked: boolean;
+  onDragEnd?: (id: string, position: Position) => void;
 }
 
 export interface CanvasItem {

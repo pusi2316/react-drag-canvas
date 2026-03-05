@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import type { DraggableItemProps, Position } from "./types";
 
 export function DragableWrapper({
